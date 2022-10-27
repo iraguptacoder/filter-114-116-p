@@ -1,9 +1,12 @@
+nosex = 0;
+nosey = 0;
+
 function takesnap(){
     save("clownfilterslays.png");
 }
 
 function preload(){
-
+    mustache = loadImage("https://i.postimg.cc/WtcpMkK0/png-transparent-movember-moustache-man-time-mustache-love-company-text-thumbnail-removebg-preview.png");
 }
 
 function setup(){
@@ -23,6 +26,8 @@ function modelloaded(){
 function gotposes(results){
     if(results.length > 0){
         console.log(results);
+        nosex = results[0].pose.nose.x-25;
+        nosey = results[0].pose.nose.y+5;
         console.log("nosex = " + results[0].pose.nose.x);
         console.log("nosey = " + results[0].pose.nose.y);
     }
@@ -30,4 +35,5 @@ function gotposes(results){
 
 function draw(){
     image(video, 0, 0, 300, 300);
+    image(mustache, nosex, nosey, 50, 20);
 }
